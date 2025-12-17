@@ -1,0 +1,71 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренировка 1 рубежки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 style="text-align: center;">Тренировка 1 рубежки</h1>
+
+    <div class="card">
+        <div class="input-group">
+            <label for="variant">Номер варианта:</label>
+            <input type="number" id="variant" placeholder="Например: 123">
+            <div style="text-align: center;">
+                <button onclick="generateTask()">Сгенерировать задание</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="taskArea" class="card hidden">
+        <h2>Задание</h2>
+        <div class="task-box">
+            <p>Даны десятичные числа:</p>
+            <p><strong>X = <span id="numX"></span></strong></p>
+            <p><strong>Y = <span id="numY"></span></strong></p>
+            <p>Перевести числа в 16-ричную систему счисления и представьтe в разрядной сетке памяти БЭВМ. Вычислить значение R=X+Y, результат представить как число со знаком в 16-ричной системе счисления разрядной сетке БЭВМ. Укажите, произошло ли переполнение при операции? Был ли перенос?.</p>
+        </div>
+
+        <h3>Поля для ответов:</h3>
+        
+        <div class="input-group">
+            <label>X в 16-ричной системе:</label>
+            <input type="text" id="ansX" placeholder="Число X">
+        </div>
+        
+        <div class="input-group">
+            <label>Y в 16-ричной системе:</label>
+            <input type="text" id="ansY" placeholder="Число Y">
+        </div>
+
+        <div class="input-group">
+            <label>Результат R = X + Y (в 16-ричной):</label>
+            <input type="text" id="ansR" placeholder="Число R">
+        </div>
+
+        <div class="input-group">
+            <label>Произошло ли переполнение (V=1)?</label>
+            <select id="ansOverflow">
+                <option value="no">Нет</option>
+                <option value="yes">Да</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Произошел ли перенос (C=1)?</label>
+            <select id="ansCarry">
+                <option value="no">Нет</option>
+                <option value="yes">Да</option>
+            </select>
+        </div>
+        <div style="text-align: center;">
+            <button onclick="checkAnswer()">Проверить решение</button>
+        </div>
+
+        <div id="resultOutput"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
