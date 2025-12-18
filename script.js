@@ -72,14 +72,19 @@ function checkAnswer() {
         { label: 'Перенос', ans: answers.C === 'yes' ? 'Да' : 'Нет', ref: isC ? 'Да' : 'Нет', raw: answers.C === correct.C }
     ];
 
+    let correctCount = 0;
+
     const resultHTML = rows.map(row => {
         const isOk = row.raw !== undefined ? row.raw : row.ans === row.ref;
-        return `<p>${row.label}: <b>${row.ans}</b> | Правильный ответ: <b>${row.ref}</b> ${isOk ? '(вы решили верно!)' : '(вы решили неверно!)'}</p>`;
+        if (isOk) {
+            correctCount++;
+        }
+        return `<p>${row.label}: <b>${row.ans}</b> | Правильный ответ: <b>${row.ref}</b> ${isOk ? '✅' : '❌'}</p>`;
     }).join('');
 
     document.getElementById('resultOutput').innerHTML = `
         <div class="result-box ${isAllCorrect ? 'success' : 'error'}">
-            <h3>Результат проверки:</h3>
+            <h3>Результат проверки (${correctCount}/5 решено верно):</h3>
             ${resultHTML}
             ${isV ? `<br><i>Объяснение переполнения: сумма ${sum} не влезает в диапазон [-32768, 32767].</i></br>` : ''}
         </div>`;
